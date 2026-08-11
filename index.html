@@ -29,10 +29,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 antialiased selection:bg-blue-500 selection:text-white">
- 
+
   <!-- Navigation -->
   <nav class="fixed top-0 z-50 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
     <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
@@ -47,9 +56,9 @@
       </div>
     </div>
   </nav>
- 
+
   <!-- Hero Section -->
-  <section id="about" class="mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6 pt-24 pb-12">
+  <section id="about" class="mx-auto flex min-h-[70vh] max-w-5xl flex-col justify-center px-6 pt-28 pb-8">
     <div class="inline-flex w-fit items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">
       <span class="h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>
       Engineering & Applied AI
@@ -60,80 +69,35 @@
     </h1>
     
     <p class="mt-6 max-w-2xl text-lg text-slate-400 leading-relaxed">
-      Specializing in multimodal vision-language models (VLMs), edge inference optimization, local RAG architecture, and analytical pipeline engineering. Focused on benchmarking model reliability [...]
+      Specializing in multimodal vision-language models (VLMs), edge inference optimization, local RAG architecture, and analytical pipeline engineering. Focused on benchmarking model reliability in real-world environments.
     </p>
 
     <!-- Call to Actions -->
     <div class="mt-8 flex flex-wrap gap-4">
-      <a href="#projects" class="rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 hover:bg-blue-500 transition-all">
-        View Projects
-      </a>
-      <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener noreferrer" class="rounded-lg border border-slate-700 bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-[...]
+      <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener noreferrer" class="rounded-lg border border-slate-700 bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-300 hover:border-slate-500 hover:bg-slate-800 hover:text-white transition-all">
         GitHub Profile
       </a>
-      <a href="YOUR_RESUME.pdf" target="_blank" class="rounded-lg border border-slate-800 bg-slate-950 px-5 py-3 text-sm font-semibold text-slate-400 hover:border-slate-700 hover:text-slate-200 tr[...]
+      <a href="YOUR_RESUME.pdf" target="_blank" class="rounded-lg border border-slate-800 bg-slate-950 px-5 py-3 text-sm font-semibold text-slate-400 hover:border-slate-700 hover:text-slate-200 transition-all">
         Resume (PDF)
       </a>
     </div>
   </section>
- 
-  <!-- Featured Projects Section -->
-  <section id="projects" class="mx-auto max-w-5xl px-6 py-20 border-t border-slate-800/60">
-    <div class="flex flex-col gap-2">
-      <h2 class="text-3xl font-bold tracking-tight text-white">Featured Projects</h2>
-      <p class="text-slate-400">Deep learning evaluation, benchmark construction, and local software design.</p>
+
+  <!-- Projects Section -->
+  <section id="projects" class="mx-auto max-w-5xl px-6 py-16 border-t border-slate-800/60">
+    <div class="flex items-center justify-between">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight text-white">Projects</h2>
+        <p class="mt-1 text-slate-400">Deep learning evaluation, benchmark construction, and local software design.</p>
+      </div>
+      <span class="hidden sm:inline-block text-xs text-slate-500 font-mono">Scroll right &rarr;</span>
     </div>
 
-    <div class="mt-12 grid gap-8 md:grid-cols-2">
+    <!-- Sideways Scrollable Container -->
+    <div class="mt-8 flex gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory">
 
-      <!-- Project Card 1 -->
-      <div class="group relative flex flex-col justify-between rounded-xl border border-slate-800 bg-slate-900/50 p-6 transition-all hover:border-blue-500/50 hover:bg-slate-900">
-        <div>
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-semibold uppercase tracking-wider text-blue-400">Benchmark & Evaluation</span>
-            <span class="text-xs text-slate-500">2026</span>
-          </div>
-          <h3 class="mt-4 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
-            VLM Traffic Causal Reasoning Benchmark
-          </h3>
-          <p class="mt-3 text-sm text-slate-400 leading-relaxed">
-            Constructed a 300-question multiple-choice benchmark evaluating edge-capable Vision-Language Models on spatial-temporal tracking and counterfactual "what-if" reasoning in driving vide[...]
-          </p>
-        </div>
-        
-        <div class="mt-6 flex flex-wrap gap-2">
-          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">PyTorch</span>
-          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">Vision-Language Models</span>
-          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">GGUF Quantization</span>
-          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">Python</span>
-        </div>
-      </div>
-
-      <!-- Project Card 2 -->
-      <div class="group relative flex flex-col justify-between rounded-xl border border-slate-800 bg-slate-900/50 p-6 transition-all hover:border-blue-500/50 hover:bg-slate-900">
-        <div>
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-semibold uppercase tracking-wider text-blue-400">Local Infrastructure</span>
-            <span class="text-xs text-slate-500">2026</span>
-          </div>
-          <h3 class="mt-4 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
-            Self-Hosted Enterprise RAG Pipeline
-          </h3>
-          <p class="mt-3 text-sm text-slate-400 leading-relaxed">
-            Designed and deployed an air-gapped Retrieval-Augmented Generation (RAG) system running locally on dedicated workstation hardware, utilizing local vector databases and quantized open-[...]
-          </p>
-        </div>
-
-        <div class="mt-6 flex flex-wrap gap-2">
-          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">Local RAG</span>
-          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">Vector Databases</span>
-          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">llama.cpp</span>
-          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">Python</span>
-        </div>
-      </div>
-
-      <!-- Project Card 3 - SURE 2026 -->
-      <a href="sure-2026.html" class="group relative flex flex-col justify-between rounded-xl border border-slate-800 bg-slate-900/50 p-6 transition-all hover:border-blue-500/50 hover:bg-slate-900 cursor-pointer">
+      <!-- Project Card 1: SURE 2026 -->
+      <a href="sure-2026.html" class="snap-start min-w-[320px] max-w-[360px] sm:min-w-[380px] group relative flex flex-col justify-between rounded-xl border border-slate-800 bg-slate-900/50 p-6 transition-all hover:border-blue-500/50 hover:bg-slate-900 cursor-pointer flex-shrink-0">
         <div>
           <div class="flex items-center justify-between">
             <span class="text-xs font-mono font-semibold uppercase tracking-wider text-blue-400">Research Program</span>
@@ -154,9 +118,55 @@
         </div>
       </a>
 
+      <!-- Project Card 2: Template Project 1 -->
+      <div class="snap-start min-w-[320px] max-w-[360px] sm:min-w-[380px] group relative flex flex-col justify-between rounded-xl border border-slate-800 bg-slate-900/50 p-6 transition-all hover:border-blue-500/50 hover:bg-slate-900 flex-shrink-0">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-semibold uppercase tracking-wider text-blue-400">Benchmark & Evaluation</span>
+            <span class="text-xs text-slate-500">2026</span>
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+            VLM Traffic Causal Reasoning Benchmark
+          </h3>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+            Constructed a 300-question multiple-choice benchmark evaluating edge-capable Vision-Language Models on spatial-temporal tracking and counterfactual "what-if" reasoning in driving video sequences.
+          </p>
+        </div>
+        
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">PyTorch</span>
+          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">VLMs</span>
+          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">Quantization</span>
+          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">Python</span>
+        </div>
+      </div>
+
+      <!-- Project Card 3: Template Project 2 -->
+      <div class="snap-start min-w-[320px] max-w-[360px] sm:min-w-[380px] group relative flex flex-col justify-between rounded-xl border border-slate-800 bg-slate-900/50 p-6 transition-all hover:border-blue-500/50 hover:bg-slate-900 flex-shrink-0">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-semibold uppercase tracking-wider text-blue-400">Local Infrastructure</span>
+            <span class="text-xs text-slate-500">2026</span>
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+            Self-Hosted Enterprise RAG Pipeline
+          </h3>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+            Designed and deployed an air-gapped Retrieval-Augmented Generation (RAG) system running locally on dedicated workstation hardware, utilizing local vector databases and quantized open-weights LLMs.
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">Local RAG</span>
+          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">Vector Databases</span>
+          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">llama.cpp</span>
+          <span class="rounded-md bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300">Python</span>
+        </div>
+      </div>
+
     </div>
   </section>
- 
+
   <!-- Technical Skills Section -->
   <section id="skills" class="mx-auto max-w-5xl px-6 py-20 border-t border-slate-800/60">
     <h2 class="text-3xl font-bold tracking-tight text-white">Technical Toolkit</h2>
@@ -193,7 +203,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- Contact & Footer Section -->
   <footer id="contact" class="border-t border-slate-800/80 bg-slate-950 py-12">
     <div class="mx-auto max-w-5xl px-6 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -202,10 +212,10 @@
         <p class="text-sm text-slate-400 mt-1">Open to discussions on AI research, software engineering, and collaborative projects.</p>
       </div>
       <div class="flex items-center gap-4">
-        <a href="mailto:your.email@domain.com" class="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-300 hover:border-slate-500 hover:text-white transiti[...]
+        <a href="mailto:your.email@domain.com" class="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-300 hover:border-slate-500 hover:text-white transition-all">
           Email Me
         </a>
-        <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener noreferrer" class="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-3[...]
+        <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener noreferrer" class="rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-300 hover:border-slate-500 hover:text-white transition-all">
           LinkedIn
         </a>
       </div>
