@@ -22,7 +22,7 @@ repository               : "danielcaro05/danielcaro05.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : 
+  avatar           : "bio-photo.jpg"
   name             : "Daniel Caro"
   pronouns         : 
   bio              : "Engineering & Applied AI — Building grounded AI systems & spatial models. Specializing in multimodal VLMs, edge inference optimization, local RAG architecture, and analytical pipeline engineering."
