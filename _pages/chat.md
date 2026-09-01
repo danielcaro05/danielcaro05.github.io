@@ -6,14 +6,9 @@ author_profile: true
 ---
 
 <div id="chat-app">
-  <div class="chat-help" style="font-size:0.82rem; color:var(--global-text-color-light,#666); background:var(--global-code-background-color,#f6f6f6); padding:0.6rem 0.75rem; border-radius:6px; border:1px solid var(--global-border-color,#ddd); line-height:1.5;">
-    <strong>Cloudflare Tunnel (Option A):</strong> To make your local <code>llama-server</code> public, run it with CORS and expose it:<br>
-    <code>llama-server --host 127.0.0.1 --port 8080 --cors -m /path/to/model.gguf</code><br>
-    <code>cloudflared tunnel --url http://localhost:8080</code> → paste the <code>https://xxx.trycloudflare.com</code> URL below. For a persistent URL use a named tunnel.
-  </div>
   <div class="chat-config">
     <label>Server URL <input id="endpoint" type="text" placeholder="https://xxx.trycloudflare.com or http://localhost:8080" spellcheck="false"></label>
-    <button id="connect-btn" class="btn-chat" onclick="checkHealth()">Check Connection</button>
+    <button id="connect-btn" class="btn-chat">Check Connection</button>
     <span id="status" class="status-dot"></span><span id="status-text">Not connected</span>
   </div>
 
@@ -38,12 +33,13 @@ author_profile: true
   const win = $('chat-window'), input = $('user-input'), statusDot = $('status'), statusText = $('status-text');
   let history = [], attachedImage = null, controller = null;
 
-  // --- Cloudflare Tunnel (Option A) endpoint persistence ---
+  // --- endpoint persistence (defaults to Cloudflare Tunnel for public site) ---
   const endpointEl = $('endpoint');
+  const defaultTunnel = 'https://furniture-education-joseph-sorted.trycloudflare.com';
   const saved = localStorage.getItem('chat-endpoint');
   if (saved) endpointEl.value = saved;
-  else if (location.hostname.includes('github.io')) endpointEl.value = '';
-  else endpointEl.value = 'http://localhost:8080';
+  else if (location.hostname.includes('github.io')) endpointEl.value = defaultTunnel;
+  else endpointEl.value = defaultTunnel;
   const saveEndpoint = () => localStorage.setItem('chat-endpoint', endpointEl.value.trim());
   endpointEl.addEventListener('change', saveEndpoint);
   endpointEl.addEventListener('input', saveEndpoint);
@@ -69,14 +65,18 @@ author_profile: true
   async function checkHealth() {
     setStatus('pending', 'Checking…');
     try {
-      const r = await fetch($('endpoint').value.replace(/\/+$/,'') + '/health');
+      const ep = $('endpoint').value.trim();
+      if (!ep) throw new Error('No Server URL');
+      const r = await fetch(ep.replace(/\/+$/,'') + '/health');
       if (!r.ok) throw new Error(r.status);
       const j = await r.json();
       setStatus('ok', j.status === 'ok' ? 'Connected' : 'Loading model (' + Math.round((j.progress||0)*100) + '%)');
     } catch (e) {
-      setStatus('err', 'Unreachable — is llama-server running?');
+      setStatus('err', 'Unreachable — is llama-server running? (' + e.message + ')');
     }
   }
+  // expose for legacy inline handlers and wire button correctly (previous onclick was broken inside IIFE)
+  if (typeof window !== 'undefined') window.checkHealth = checkHealth;
 
   function buildContent(text) {
     if (!attachedImage) return text;
@@ -164,6 +164,7 @@ author_profile: true
     $('image-input').value = '';
   }
 
+  $('connect-btn').addEventListener('click', checkHealth);
   $('send-btn').addEventListener('click', send);
   $('stop-btn').addEventListener('click', () => controller?.abort());
   input.addEventListener('keydown', (e) => {
