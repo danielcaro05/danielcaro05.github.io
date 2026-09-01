@@ -33,13 +33,13 @@ author_profile: true
   const win = $('chat-window'), input = $('user-input'), statusDot = $('status'), statusText = $('status-text');
   let history = [], attachedImage = null, controller = null;
 
-  // --- endpoint persistence (defaults to Cloudflare Tunnel for public site) ---
+  // --- endpoint persistence ---
   const endpointEl = $('endpoint');
   const defaultTunnel = 'https://furniture-education-joseph-sorted.trycloudflare.com';
   const saved = localStorage.getItem('chat-endpoint');
   if (saved) endpointEl.value = saved;
   else if (location.hostname.includes('github.io')) endpointEl.value = defaultTunnel;
-  else endpointEl.value = defaultTunnel;
+  else endpointEl.value = 'http://localhost:8080';
   const saveEndpoint = () => localStorage.setItem('chat-endpoint', endpointEl.value.trim());
   endpointEl.addEventListener('change', saveEndpoint);
   endpointEl.addEventListener('input', saveEndpoint);
