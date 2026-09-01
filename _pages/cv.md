@@ -11,15 +11,15 @@ redirect_from:
 
 Work experience
 ======
-* Data Scientist — 5v5 Hockey (Windsor, Ontario) &nbsp; *05/2025 - Present*
-  * Designed and implemented Python code to process multi-season NHL data from SQL databases
-  * Used logistic regression to derive stat weightings for offense, defense, power play, and penalty kill metrics
-  * Applied dynamic scaling and normalization techniques to make player ratings comparable across positions
-
 * Student Researcher — SURE 2026, University of Michigan-Dearborn (Dearborn, Michigan) &nbsp; *05/2026 - Present*
   * Converted open-ended UDVideoQA benchmark questions into a 300-question multiple-choice dataset to eliminate grading ambiguity and enable deterministic, automated evaluation
   * Developed an automated workflow that generates "what-if" counterfactual question-answer pairs to replace flawed baseline data
   * Evaluated spatial-temporal and causal reasoning across six Vision-Language Models (VLMs)
+
+* Data Scientist — 5v5 Hockey (Windsor, Ontario) &nbsp; *05/2025 - Present*
+  * Designed and implemented Python code to process multi-season NHL data from SQL databases
+  * Used logistic regression to derive stat weightings for offense, defense, power play, and penalty kill metrics
+  * Applied dynamic scaling and normalization techniques to make player ratings comparable across positions
 
 * AI Enablement Intern — CDW Canada (Toronto, Ontario) &nbsp; *05/2026 - 08/2026*
   * Implemented a retrieval-augmented generation (RAG) solution that integrates document ingestion, vector embeddings, and large language models to enable accurate question answering over enterprise knowledge
