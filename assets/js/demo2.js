@@ -1,3 +1,4 @@
+function initDemo2(){
 (function() {
   const prompts = [
     { prompt: "Do you detect a vehicle collision occurring in this clip? Make sure you closely inspect all frames of the video.", answer: "Yes" },
@@ -13,7 +14,10 @@
   const win = document.getElementById('demo2-chat-window');
   const btn = document.getElementById('demo2-next-btn');
   const prog = document.getElementById('demo2-progress');
-  if (!win || !btn || !prog) return;
+  if (!win || !btn || !prog) {
+    console.warn('Demo2: required elements not found', {win: !!win, btn: !!btn, prog: !!prog});
+    return;
+  }
   function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function addMsg(role, text){
     const d = document.createElement('div');
@@ -42,3 +46,9 @@
   win.appendChild(hint);
   btn.addEventListener('click', function rm(){ hint.remove(); btn.removeEventListener('click', rm); }, {once:true});
 })();
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDemo2);
+} else {
+  initDemo2();
+}
